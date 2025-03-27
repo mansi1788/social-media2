@@ -1,0 +1,30 @@
+.Post
+{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    background-color: var(--cardColor);
+    border-radius: 1rem;
+    gap: 1rem;
+}
+
+.Post>img{
+    /* width: 50%; */
+   max-height: 50%;
+    justify-content: center;
+    display: flex;
+    object-fit: cover;
+    border-radius: 0.5rem;
+
+}
+
+.postReact{
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    object-fit: cover;
+
+}
+.postReact img{
+    width: 71px; 
+}
