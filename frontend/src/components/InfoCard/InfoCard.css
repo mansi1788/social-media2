@@ -13,6 +13,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /* position: relative;
+    width: 100vw;
+    z-index: 2; */
 }
 
 .infoHead>div:hover{

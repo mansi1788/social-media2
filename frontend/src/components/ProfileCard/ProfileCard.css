@@ -1,101 +1,216 @@
-.ProfileCard{
-    border-radius: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    gap: 1rem;
-    overflow-x: clip;
-    background: var(--cardColor);
+.ProfileCard {
+  border-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  /* position: relative; */
+  gap: 1rem;
+  overflow-x: clip;
+  background: var(--cardColor);
+  /* width: 100%; */
+  /* max-width: 800px; */
+  /* margin: auto; */
+  padding: 1.5rem;
+
 }
 
-.ProfileImages{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+/* Profile Images */
+.ProfileImages {
+  z-index: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+/* ProfileImages */
+.ProfileImages > img:nth-of-type(1) {
+  overflow: hidden;
+  z-index: 0;
+  width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+  clip-path: inset(10% 0 10% 0);
+  border-radius: 1rem;
+}
+/* coverimage */
+.ProfileImages > img:nth-of-type(2) {
+  overflow: hidden;
+  z-index: 0;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -50px;
+  box-shadow: var(--profileShadow);
+  border: 3px solid white;
 }
 
-.ProfileImages>img:nth-of-type(1){
-    width: 80%;
-    height: 80%;
-    object-fit: cover;
-    clip-path: inset(10% 0 10% 0);
+/* Profile Name */
+.ProfileName {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4rem;
+  gap: 5px;
 }
 
-.ProfileImages>img:nth-of-type(2)
- {
-    width: 18rem; 
-    bottom :2rem;
-    border-radius: 50%;
-    position: absolute;
-    /* bottom: -rem; */
-    box-shadow: var(--profileShadow);
+.ProfileName > span:first-child {
+  font-weight: bold;
+  font-size: 1.4rem;
 }
 
-.ProfileName{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 3rem;
-    gap: 10px;
-}
-
-.ProfileName>span:nth-of-type(1)
-{
-    font-weight: bold;
+.ProfileName > span:last-child {
+  font-size: 1rem;
+  color: var(--gray);
+  text-align: center;
 }
 
 /* Follow Status */
 .followStatus {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-  }
-  
-  .followStatus > hr {
-    width: 85%;
-    border: 1px solid var(--hrColor);
-  }
-  
-  .followStatus > div {
-    display: flex;
-    gap: 1rem;
-    width: 80%;
-    justify-content: space-around;
-    align-items: center;
-  }
-  
-  .follow {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-    align-items: center;
-    justify-content: center;
-  }
-  .follow > span:nth-of-type(1) {
-    font-weight: bold;
-  }
-  
-  .follow > span:nth-of-type(2) {
-    color: var(--gray);
-    font-size: 13px;
-  }
-  
-  .vl {
-    height: 150%;
-    border-left: 2px solid var(--hrColor);
-  }
-
-
-  .ProfileCard>span{
-      font-weight: bold;
-      color: orange;
-      align-self: center;
-      margin-bottom: 1rem;
-      cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
+.followStatus > hr {
+  width: 90%;
+  border: 1px solid var(--hrColor);
+}
 
+.followStatus > div {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.follow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.follow > span:nth-of-type(1) {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.follow > span:nth-of-type(2) {
+  color: var(--gray);
+  font-size: 0.9rem;
+}
+
+.vl {
+  height: 45px;
+  border-left: 2px solid var(--hrColor);
+}
+
+/* Profile Link */
+.ProfileCard > span {
+  font-weight: bold;
+  color: orange;
+  align-self: center;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* 🔹 RESPONSIVENESS */
+
+/* Medium Screens (Tablets) */
+@media (max-width: 768px) {
+  .ProfileCard {
+      max-width: 90%;
+      padding: 1rem;
+  }
+
+  .ProfileImages > img:nth-of-type(1) {
+      max-height: 200px;
+  }
+
+  .ProfileImages > img:nth-of-type(2) {
+      width: 90px;
+      height: 90px;
+      bottom: -40px;
+  }
+
+  .ProfileName {
+      margin-top: 3rem;
+  }
+
+  .ProfileName > span:first-child {
+      font-size: 1.2rem;
+  }
+
+  .ProfileName > span:last-child {
+      font-size: 0.9rem;
+  }
+
+  .followStatus > div {
+      gap: 0.5rem;
+  }
+
+  .follow > span:nth-of-type(1) {
+      font-size: 0.9rem;
+  }
+
+  .follow > span:nth-of-type(2) {
+      font-size: 0.8rem;
+  }
+
+  .vl {
+      height: 35px;
+  }
+}
+
+/* Small Screens (Mobile) */
+@media (max-width: 480px) {
+  .ProfileCard {
+      padding: 0.8rem;
+  }
+
+  .ProfileImages > img:nth-of-type(1) {
+      max-height: 150px;
+  }
+
+  .ProfileImages > img:nth-of-type(2) {
+      width: 70px;
+      height: 70px;
+      bottom: -35px;
+  }
+
+  .ProfileName {
+      margin-top: 2.5rem;
+  }
+
+  .ProfileName > span:first-child {
+      font-size: 1rem;
+  }
+
+  .ProfileName > span:last-child {
+      font-size: 0.8rem;
+  }
+
+  .followStatus > div {
+      gap: 0.3rem;
+  }
+
+  .follow > span:nth-of-type(1) {
+      font-size: 0.8rem;
+  }
+
+  .follow > span:nth-of-type(2) {
+      font-size: 0.7rem;
+  }
+
+  .vl {
+      height: 25px;
+  }
+}

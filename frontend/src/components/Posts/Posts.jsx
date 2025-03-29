@@ -13,7 +13,7 @@ const Posts = () => {
   let { posts, loading } = useSelector((state) => state.postReducer);
 
   useEffect(() => {
-    console.log("user._id////////////7777777777777777777///////",user._id)
+    console.log("user._id/////////////////////////////////////",user._id)
     if (user?._id) {
       dispatch(getTimelinePosts(user._id));
     }
