@@ -23,6 +23,17 @@ const Post = ({ data }) => {
 
   };
 
+ const handleDelete = async () => {
+    if (window.confirm("Are you sure you want to delete this post?")) {
+      try {
+        await deletePost(data._id, user._id);
+        onDelete(data._id);
+      } catch (error) {
+        console.error("Failed to delete post", error);
+      }
+    }
+  };
+
   return (
 
     <div className="Post">
@@ -30,6 +41,9 @@ const Post = ({ data }) => {
         src={data.image ? process.env.REACT_APP_PUBLIC_FOLDER + data.image : ""}
         alt=""
       />
+     {user._id === data.userId && (
+        <button className="delete-button" onClick={handleDelete}>🗑 Delete</button>
+      )}
 
       <div className="postReact">
         <img
