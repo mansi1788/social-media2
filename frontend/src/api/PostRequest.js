@@ -11,16 +11,19 @@ API.interceptors.request.use((req) => {
 
 export const getTimelinePosts= (id)=> API.get(`/post/${id}/timeline`);
 export const likePost=(id, userId)=>API.put(`/post/${id}/like`, {userId: userId})
+export const deletePost=(postId, userId)=>API.delete(`/post/${postId}`, {
+  data: { userId }, // Send userId in request body
+});
 
 
-export const deletePost = async (postId, userId) => {
-  try {
-    const response = await axios.delete(`/post/${postId}`, {
-      data: { userId }, // Send userId in request body
-    });
-    return response.data;
-  } catch (error) {
-    console.error("Error deleting post:", error);
-    throw error;
-  }
-};
+// export const deletePost = async (postId, userId) => {
+//   try {
+//     const response = await axios.delete(`/post/${postId}`, {
+//       data: { userId }, // Send userId in request body
+//     });
+//     return response.data;
+//   } catch (error) {
+//     console.error("Error deleting post:", error);
+//     throw error;
+//   }
+// };
