@@ -42,7 +42,7 @@ const Post = ({ data,onDelete }) => {
         alt=""
       />
      {user._id === data.userId && (
-        <button className="delete-button" onClick={handleDelete}>🗑 Delete</button>
+        <button className="delete-button" onClick={handleDelete}>X</button>
       )}
 
       <div className="postReact">
