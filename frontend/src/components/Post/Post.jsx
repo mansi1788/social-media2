@@ -4,10 +4,10 @@ import Comment from "../../img/comment.png";
 import Share from "../../img/share.jpg";
 import Heart from "../../img/like.png";
 import NotLike from "../../img/NotLike.jpg";
-import { likePost } from "../../api/PostRequest";
+import { likePost,deletePost } from "../../api/PostRequest";
 import { useSelector } from "react-redux";
 
-const Post = ({ data }) => {
+const Post = ({ data,onDelete }) => {
  
   const { user } = useSelector((state) => state.authReducer.authData);
   const [liked, setLiked] = useState(
