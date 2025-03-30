@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import './Posts.css';
 import { getTimelinePosts } from "../../actions/postAction";
 import Post from '../Post/Post';
@@ -10,36 +10,37 @@ const Posts = () => {
   const dispatch = useDispatch();
   
   const { user } = useSelector((state) => state.authReducer.authData);
-  let { posts, loading } = useSelector((state) => state.postReducer);
+  const { posts, loading } = useSelector((state) => state.postReducer);
+
+  const [postsState, setPostsState] = useState([]);
 
   useEffect(() => {
-    console.log("user._id/////////////////////////////////////",user._id)
     if (user?._id) {
       dispatch(getTimelinePosts(user._id));
     }
   }, [user?._id, dispatch]);  
 
+  useEffect(() => {
+    setPostsState(posts); // Sync local state with Redux state
+  }, [posts]);
+
+  const handlePostDelete = (postId) => {
+    setPostsState((prevPosts) => prevPosts.filter((post) => post._id !== postId));
+  };
+
   // Handle loading state
   if (loading) return <div>Loading posts...</div>;
-
-  // Check if user data is available
-  if (!user) {
-    return <div>Loading user data...</div>;
-  }
-
-  if (!posts || posts.length === 0) {
-    return <div>No posts available</div>;
-  }
-  console.log("user._id/////////////////////////",user._id)
+  if (!user) return <div>Loading user data...</div>;
+  if (!postsState || postsState.length === 0) return <div>No posts available</div>;
 
   if (params.id) {
-    posts = posts.filter((post) => post.userId === params.id);
+    postsState = postsState.filter((post) => post.userId === params.id);
   }
 
   return (
     <div className="Posts">
-      {posts.map((post) => (
-        <Post key={post._id} data={post} />
+      {postsState.map((post) => (
+        <Post key={post._id} data={post} onDelete={handlePostDelete} />
       ))}
     </div>
   );
